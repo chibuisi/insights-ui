@@ -1,29 +1,27 @@
-import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import {handleError} from "@/shared/utils/error.util";
 
-Vue.use(VueRouter)
+import routes from '@/router/routes';
+import { beforeEachRoute, beforeResolveRoute } from '@/router/utils/router.utils';
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+export const createRouter = (store) => {
+  const router = new VueRouter({
+      mode: 'history',
+      scrollBehavior: (_, __, savedPosition) => {
+        if(savedPosition) {
+          return savedPosition;
+        }
+        return {x: 0, y: 0};
+      },
+      routes,
+  });
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+  router.beforeEach(beforeEachRoute);
+  router.beforeResolve((to, from, next) => {
+    return beforeResolveRoute(to, from, next, store);
+  });
 
-export default router
+  router.onError(handleError);
+
+  return router;
+}

@@ -1,12 +1,40 @@
-import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import { sync } from 'vuex-router-sync'
+import VueRouter from 'vue-router'
+import { createRouter } from "./router";
+import store from '@/store'
+import * as errorUtils from "./shared/utils/error.util";
+import { setupInterceptors } from "./shared/utils/interceptor.util";
+import Vue from "vue";
 
-Vue.config.productionTip = false
+const router = createRouter(store);
+
+setupInterceptors(store, router);
+
+Vue.use(VueRouter);
+
+Vue.config.errorHandler = errorUtils.handleError;
+errorUtils.handlePromiseRejections();
+
+if(process.env.NODE_ENV === 'development'){
+    Vue.config.devtools = true;
+    Vue.config.debug = true;
+    Vue.config.productionTip = false;
+}
+
+sync(store, router);
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+    router,
+    store,
+    render: (h) => h(App)
+}).$mount('#app');
+
+//createApp(App).use(router).mount('#app')
+
+// const app = createApp(App, {
+//     store,
+//     router
+// });
+//
+// app.mount('#app')

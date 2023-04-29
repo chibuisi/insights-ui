@@ -1,15 +1,28 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
-Vue.use(Vuex)
+import auth from './auth';
+
+Vue.use(Vuex);
+
+export const modules = {
+    auth,
+};
+
+const vuexPersistedPathsAllowList = [
+    'auth.jwt',
+    'auth.user',
+];
+
+const localStorageKey = `minor-insights-${process.env.VUE_APP_ENV}`;
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+    modules,
+    plugins: [
+        createPersistedState({
+            key: localStorageKey,
+            paths: vuexPersistedPathsAllowList,
+        }),
+    ],
 })
