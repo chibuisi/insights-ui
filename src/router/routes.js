@@ -3,15 +3,16 @@ import Home from "../views/Home";
 import About from '../views/About'
 import Coaches from "../views/Coaches";
 import Login from "../views/Login";
-import Index from "../views/Index";
+import Welcome from "../views/Welcome";
 
 const routes = [
     {
         path: '/',
-        name: 'index',
-        component: Index,
+        alias: ['','/welcome','/index'],
+        name: 'welcome',
+        component: Welcome,
         meta: {
-            title: 'Index',
+            title: 'Minor Insights',
             isPublic: true,
         }
     },
@@ -39,6 +40,19 @@ const routes = [
         component: Coaches,
         meta: {
             title: 'Coaches'
+        },
+        beforeEnter(to, from, next){
+            const hasCoachRole = store.getters['auth/hasCoachRole'];
+
+            if(!hasCoachRole) {
+                const { ...nextRoute } = to;
+                nextRoute.name = 'index';
+                nextRoute.replace = true;
+
+                return next(nextRoute);
+            }
+
+            return next();
         }
     },
     {

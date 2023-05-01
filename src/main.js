@@ -6,6 +6,8 @@ import store from '@/store'
 import * as errorUtils from "./shared/utils/error.util";
 import { setupInterceptors } from "./shared/utils/interceptor.util";
 import Vue from "vue";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const router = createRouter(store);
 
@@ -24,9 +26,14 @@ if(process.env.NODE_ENV === 'development'){
 
 sync(store, router);
 
+Vue.config.productionTip = false;
+
 new Vue({
     router,
     store,
+    created() {
+        AOS.init();
+    },
     render: (h) => h(App)
 }).$mount('#app');
 

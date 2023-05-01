@@ -1,15 +1,45 @@
 <template>
   <div class="login-container">
-    <h1>Login</h1>
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input id="username" v-model="user" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input id="password" v-model="password" type="password" class="form-control">
-    </div>
-    <button @click="login" class="btn btn-primary">Login</button>
+<!--    <h1>Login</h1>-->
+<!--    <div class="form-group">-->
+<!--      <label for="username">Username:</label>-->
+<!--      <input id="username" v-model="user" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="password">Password:</label>-->
+<!--      <input id="password" v-model="password" type="password" class="form-control">-->
+<!--    </div>-->
+<!--    <button @click="login" class="btn btn-primary">Login</button>-->
+<!--  </div>-->
+    <form>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="form2Example1" class="form-control" v-model="user" />
+        <label class="form-label" for="form2Example1">Username/Email</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="form2Example2" class="form-control" v-model="password" />
+        <label class="form-label" for="form2Example2">Password</label>
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <div class="col">
+          <!-- Simple link -->
+          <a href="#!">Forgot password?</a>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn btn-primary btn-block mb-4" @click="login">Sign in</button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? <a href="#!">Register</a></p>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -50,8 +80,10 @@ export default {
 
       if (this.isLoggedIn) {
         if(this.redirect){
+          if(this.redirect === 'login')
+            this.redirect = 'home';
           await this.$router.push({
-            name: this.redirect
+            name: this.redirect, replace: true
           })
         }
         await this.$router.push({
@@ -66,9 +98,10 @@ export default {
 <style scoped>
 .login-container {
   max-width: 700px;
+  width: 500px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   border-radius: 4px;
   text-align: center;
   position: absolute;
@@ -78,38 +111,55 @@ export default {
   box-sizing: border-box
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
+/*.form-group {*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+/*label {*/
+/*  display: block;*/
+/*  margin-bottom: 5px;*/
+/*}*/
 
-.form-control {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+/*.form-control {*/
+/*  width: 100%;*/
+/*  padding: 10px;*/
+/*  font-size: 16px;*/
+/*  border-radius: 4px;*/
+/*  border: 1px solid #ccc;*/
+/*  box-sizing: border-box;*/
+/*}*/
 
-.btn {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-}
+/*.btn {*/
+/*  padding: 10px;*/
+/*  font-size: 16px;*/
+/*  border-radius: 4px;*/
+/*  border: none;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
+/*.btn-primary {*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*}*/
 
-.btn-primary:hover {
-  background-color: #0069d9;
-}
+/*.btn-primary:hover {*/
+/*  background-color: #0069d9;*/
+/*}*/
+
+/*start here*/
+/*.divider:after,*/
+/*.divider:before {*/
+/*  content: "";*/
+/*  flex: 1;*/
+/*  height: 1px;*/
+/*  background: #eee;*/
+/*}*/
+/*.h-custom {*/
+/*  height: calc(100% - 73px);*/
+/*}*/
+/*@media (max-width: 450px) {*/
+/*  .h-custom {*/
+/*    height: 100%;*/
+/*  }*/
+/*}*/
 </style>

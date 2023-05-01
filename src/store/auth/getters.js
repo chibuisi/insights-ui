@@ -8,5 +8,9 @@ export default {
         const name = givenName || familyName;
 
         return name ? name.charAt(0).toUpperCase() + name.slice(1) : username;
+    },
+
+    hasCoachRole: ({ hasCoachRole }) => {
+        return hasCoachRole;
     }
 }

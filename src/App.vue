@@ -1,8 +1,18 @@
 <template>
-  <router-view/>
+  <main>
+    <header-component />
+    <section>
+      <router-view />
+    </section>
+  </main>
 </template>
 
 <script>
-// import { mapState, mapGetters } from 'vuex'
+import HeaderComponent from "./components/HeaderComponent";
+export default {
+  components: {
+    'header-component': HeaderComponent,
+  }
+}
 </script>
 
