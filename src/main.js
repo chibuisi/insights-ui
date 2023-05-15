@@ -8,12 +8,13 @@ import { setupInterceptors } from "./shared/utils/interceptor.util";
 import Vue from "vue";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Vuelidate from 'vuelidate'
 
 const router = createRouter(store);
 
 setupInterceptors(store, router);
 
-Vue.use(VueRouter);
+Vue.use(VueRouter, Vuelidate);
 
 Vue.config.errorHandler = errorUtils.handleError;
 errorUtils.handlePromiseRejections();

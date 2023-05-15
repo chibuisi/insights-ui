@@ -9,6 +9,11 @@ const plugins = process.env.NODE_ENV === 'nondevelopment' ? [new UglifyJsPlugin(
     })] : [];
 
 module.exports = {
+    // entry: './src/js/main.js',
+    // output: {
+    //     filename: 'main.js',
+    //     path: path.resolve(__dirname, 'dist')
+    // },
     lintOnSave: true,
 
     productionSourceMap: process.env.NODE_ENVIRONMENT === 'nondevelopment',

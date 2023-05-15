@@ -3,37 +3,40 @@
   <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="/index" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+      <router-link to="/index" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Minor Insights<span>.</span></h1>
-      </a>
+        <router-link to="/"><h1>Minor Insights<span>.</span></h1></router-link>
+      </router-link>
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" v-if="isIndexPage()">
         <ul>
-          <li><a class="nav-link scrollto" href="/index">Home</a></li>
-          <li><a class="nav-link scrollto" href="/about">About</a></li>
-          <li><a class="nav-link scrollto" href="index.html#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+<!--          <li><router-link class="nav-link scrollto" to="/index">Home</router-link></li>-->
+          <li><router-link class="nav-link scrollto" to="/about">About</router-link></li>
+          <li><router-link class="nav-link scrollto" to="/team">Team</router-link></li>
+          <li><router-link to="/blog">Blog</router-link></li>
+          <li class="dropdown"><router-link to="/services"><span>Services</span> <i class="bi bi-chevron-down dropdown-indicator"></i></router-link>
             <ul>
-              <li class="dropdown"><a href="#"><span>Coaching</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <li class="dropdown"><router-link to="#"><span>Coaching</span> <i class="bi bi-chevron-right dropdown-indicator"></i></router-link>
                 <ul>
-                  <li><a href="#">1 X 1 Coach Meetings</a></li>
-                  <li><a href="#">Mentorship</a></li>
+                  <li><router-link to="#">1 X 1 Coach Meetings</router-link></li>
+                  <li><router-link to="#">Mentorship</router-link></li>
                 </ul>
               </li>
-              <li><a href="#">Blogs</a></li>
-              <li><a href="#">Breaking News</a></li>
+              <li><router-link to="#">Blogs</router-link></li>
+              <li><router-link to="#">Breaking News</router-link></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="#" @click="loginPage">Login</a></li>
+          <li><router-link class="nav-link scrollto" to="/contact">Contact</router-link></li>
+          <li>
+            <router-link v-if="!this.isLoggedIn" class="nav-link" to="/login">Login</router-link>
+            <router-link v-else class="nav-link" to="/logout">Logout</router-link>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#about">Get Started</a>
+<!--      <router-link v-if="!this.isLoginPage || !this.isLoggedIn" class="btn-getstarted scrollto" to="/getStarted">Get Started</router-link>-->
 
     </div>
   </header><!-- End Header -->
@@ -41,16 +44,51 @@
 </template>
 
 <script>
+
+import {mapGetters} from "vuex";
+
 export default {
   name: "Header",
-  methods: {
-    async loginPage() {
-      await this.$router.push({
-        name: 'login',
-      })
+  components: {
+
+  },
+  data() {
+    return {
+      pageName: ''
     }
-  }
-}
+  },
+  async created() {
+
+  },
+  mounted() {
+    this.pageName = this.$route.name;
+  },
+
+  methods: {
+    getPageName() {
+      return this.pageName;
+    },
+    isLoginPage() {
+      return this.getPageName() === 'login';
+    },
+    isIndexPage() {
+      return this.pageName === 'welcome';
+    }
+  },
+  computed: {
+    ...mapGetters({
+      isLoggedIn: 'auth/isLoggedIn'
+    }),
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler(route) {
+        this.pageName = route.name;
+      },
+    }
+  },
+};
 </script>
 
 <style scoped>

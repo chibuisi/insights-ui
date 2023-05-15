@@ -3,5 +3,5 @@ export default {
     jwt: null,
     user: {},
     hasCoachRole: false,
-    hasManagerRole: false
+    hasManagerRole: false,
 }

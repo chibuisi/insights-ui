@@ -4,6 +4,9 @@ import About from '../views/About'
 import Coaches from "../views/Coaches";
 import Login from "../views/Login";
 import Welcome from "../views/Welcome";
+import GetStarted from "../views/GetStarted";
+import Blog from "../views/Blog";
+import Register from "../views/Register";
 
 const routes = [
     {
@@ -21,7 +24,7 @@ const routes = [
         name: 'about',
         component: About,
         meta: {
-            title: 'About',
+            title: 'Minor Insights - About',
             isPublic: true,
         }
     },
@@ -30,7 +33,16 @@ const routes = [
         name: 'login',
         component: Login,
         meta: {
-            title: 'Login',
+            title: 'Minor Insights - Login',
+            isPublic: true,
+        }
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: Register,
+        meta: {
+            title: 'Minor Insights - Register',
             isPublic: true,
         }
     },
@@ -39,14 +51,14 @@ const routes = [
         name: 'coaches',
         component: Coaches,
         meta: {
-            title: 'Coaches'
+            title: 'Minor Insights - Coaches'
         },
         beforeEnter(to, from, next){
             const hasCoachRole = store.getters['auth/hasCoachRole'];
 
             if(!hasCoachRole) {
                 const { ...nextRoute } = to;
-                nextRoute.name = 'index';
+                nextRoute.name = 'welcome';
                 nextRoute.replace = true;
 
                 return next(nextRoute);
@@ -60,7 +72,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            title: 'Home'
+            title: 'Minor Insights - User Home'
         }
     },
     {
@@ -73,7 +85,37 @@ const routes = [
         // eslint-disable-next-line no-unused-vars
         beforeEnter: (to, from) => {
             store.dispatch('auth/LOGOUT');
+            if(from.name === 'welcome') {
+                return false;
+            }
             return window.location.assign(window.location.origin+"/login");
+        }
+    },
+    {
+        path: '/services',
+        name: 'services',
+        component: null,
+        meta: {
+            title: 'Minor Insights - Services',
+            isPublic: true
+        }
+    },
+    {
+        path: '/getStarted',
+        name: 'getStarted',
+        component: GetStarted,
+        meta: {
+            title: 'Minor Insights - Get Started',
+            isPublic: true
+        }
+    },
+    {
+        path: '/blog',
+        name: 'blog',
+        component: Blog,
+        meta: {
+            title: 'Minor Insights - Blog',
+            isPublic: true
         }
     },
     {

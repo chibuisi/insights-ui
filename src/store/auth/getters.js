@@ -12,5 +12,5 @@ export default {
 
     hasCoachRole: ({ hasCoachRole }) => {
         return hasCoachRole;
-    }
+    },
 }

@@ -1,0 +1,9 @@
+add required routes to routes done
+create page not found page
+Create logo
+create favicon from logo
+create register page
+validate login and register page
+disable register button if any validation error
+add a spinner while loading
+create user page

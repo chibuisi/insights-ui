@@ -5,7 +5,7 @@
       <h2>Welcome to <span>Minor Insights & Interests</span></h2>
       <p>We have Insights based on your Interests. You choose them, we deliver them when you want</p>
       <div class="d-flex">
-        <a href="" class="btn-get-started scrollto">Get Started</a>
+        <router-link to="/getStarted" class="btn-get-started scrollto">Get Started</router-link>
         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>

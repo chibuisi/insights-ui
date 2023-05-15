@@ -23,6 +23,6 @@ export default {
 
     SET_MANAGER_ROLE(state, hasManagerRole) {
         state.hasManagerRole = hasManagerRole;
-    }
+    },
 
 }

@@ -12,7 +12,7 @@ export default {
 
     LOGOUT({commit}) {
         commit('SESSION_END');
-    }
+    },
 }
 
 const login = async ({commit}, {data}) => {
@@ -23,7 +23,6 @@ const login = async ({commit}, {data}) => {
 
     let jwt = '';
      await axios.post(authUrl, data, requestConfig).then((response) => {
-        console.log(response.data.jwt)
         jwt = response.data.jwt;
     }).catch((error) => {
         commit('SESSION_FAIL')
@@ -31,7 +30,6 @@ const login = async ({commit}, {data}) => {
     });
     if(jwt){
         try {
-            console.log(jwtDecode(jwt))
             const {id, email, firstName, lastName, authorities, exp} = jwtDecode(jwt);
 
             if (isJwtExpired(exp)) {
