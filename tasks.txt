@@ -2,8 +2,9 @@ add required routes to routes done
 create page not found page
 Create logo
 create favicon from logo
-create register page
-validate login and register page
-disable register button if any validation error
-add a spinner while loading
-create user page
+create register page done
+validate login and register page done
+disable register button if any validation error - not required atm
+add a spinner while loading - done
+complete the index page - in progress`
+create user page - in progress

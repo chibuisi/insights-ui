@@ -13,4 +13,8 @@ export default {
     hasCoachRole: ({ hasCoachRole }) => {
         return hasCoachRole;
     },
+
+    getAuthFailedReason: ({ failedReason }) => {
+        return failedReason;
+    },
 }

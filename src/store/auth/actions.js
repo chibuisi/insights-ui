@@ -26,6 +26,8 @@ const login = async ({commit}, {data}) => {
         jwt = response.data.jwt;
     }).catch((error) => {
         commit('SESSION_FAIL')
+         if(error.code === 'ERR_NETWORK')
+             commit('SET_AUTH_FAILED_REASON', error.message)
         console.log(error);
     });
     if(jwt){

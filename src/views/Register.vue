@@ -100,9 +100,10 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-5" v-if="showModal">
-                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: relative">
                         <strong>{{errorMessage}}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal"
+                                style="position: absolute; right: 5%">
                           <i class="bi bi-x"></i>
                         </button>
                       </div>
@@ -123,7 +124,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <router-link to="/login">Sign in</router-link>
+                        Already a user? <router-link to="/login"> Sign in</router-link>
                       </div>
                     </div>
 
@@ -240,18 +241,24 @@ export default {
         return true;
       }
       if(!this.v$.username.$invalid) {
-        const response = await axios.get(`${process.env.VUE_APP_SERVICE_URL}/user/check-username?username=${value}`);
-        this.isUsernameAvailable = response.data;
-        if(!this.isUsernameAvailable)
-          this.v$.username.$touch();
-      } else {
-        this.isUsernameAvailable = true;
-        this.v$.username.$touch()
+        await axios.get(`${process.env.VUE_APP_SERVICE_URL}/user/check-username?username=${value}`)
+            .then((response) => {
+              this.isUsernameAvailable = response.data;
+              if(!this.isUsernameAvailable)
+                this.v$.username.$touch();
+              else {
+                this.isUsernameAvailable = true;
+                this.v$.username.$touch()
+              }
+
+            })
+            // eslint-disable-next-line no-unused-vars
+          .catch((error) => {
+            this.username = '';
+          });
+
       }
-
       return this.isUsernameAvailable;
-
-      // return false;
     },
 
     async register() {
@@ -264,6 +271,7 @@ export default {
         return;
       }
 
+      this.resetShowModal();
       this.isSubmitting = true;
       this.submitStatus = 'PENDING'
 
@@ -291,18 +299,21 @@ export default {
               this.$router.push({
                 name: 'login', replace: true, query: {registered: true}
               })
+              this.isSubmitting = false;
             }
           })
           .catch((error) => {
+            this.isSubmitting = false;
             this.showModal = true;
             this.submitStatus = this.errorMessage;
             if(error.response.status === 409) {
-              this.errorMessage = 'User with email already exists. Sign-in instead.   '
+              this.errorMessage = 'User with email already exists. Sign-in instead.'
               this.submitStatus = 'FAILED'
             }
             else {
               this.submitStatus = 'FAILED';
             }
+
             console.log(error);
           });
 
@@ -314,6 +325,7 @@ export default {
       this.isSubmitting = false;
     }
   },
+
   computed: {
     hasValidationErrors() {
       return this.v$.$invalid;

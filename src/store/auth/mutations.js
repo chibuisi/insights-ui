@@ -25,4 +25,8 @@ export default {
         state.hasManagerRole = hasManagerRole;
     },
 
+    SET_AUTH_FAILED_REASON(state, failedReason) {
+        state.failedReason = failedReason;
+    }
+
 }

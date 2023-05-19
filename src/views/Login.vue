@@ -1,12 +1,13 @@
 <template>
   <div class="login-container">
-    <h1>Login</h1>
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
     <form @submit.prevent="login" novalidate>
       <!-- Error row -->
       <div class="form-outline mb-4" v-if="showModal">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: relative">
           <strong>{{errorMessage}}</strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal"
+          style="position: absolute; right: 5%">
             <i class="bi bi-x"></i>
           </button>
         </div>
@@ -36,7 +37,7 @@
       <div class="row mb-4">
         <div class="col">
           <!-- Simple link -->
-          <a href="#!">Forgot password?</a>
+          <a href="">Forgot password?</a>
         </div>
       </div>
 
@@ -105,7 +106,8 @@ export default {
       query: ({route}) => Object(route.query),
     }),
     ...mapGetters({
-      isLoggedIn: 'auth/isLoggedIn'
+      isLoggedIn: 'auth/isLoggedIn',
+      authFailedReason: 'auth/getAuthFailedReason',
     }),
     redirect() {
       const { redirect } = this.query;
@@ -127,6 +129,7 @@ export default {
         return;
       }
 
+      this.resetShowModal();
       this.isLoggingIn = true;
 
       const data = {
@@ -153,6 +156,7 @@ export default {
         this.isLoggingIn = false;
       }
 
+      this.errorMessage = this.authFailedReason;
       this.showModal = true;
       this.isLoggingIn = false;
 
