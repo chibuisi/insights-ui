@@ -1,10 +1,10 @@
 add required routes to routes done
-create page not found page
+create page-not-found page - done
 Create logo
 create favicon from logo
 create register page done
 validate login and register page done
 disable register button if any validation error - not required atm
 add a spinner while loading - done
-complete the index page - in progress`
+complete the index page - in progress
 create user page - in progress

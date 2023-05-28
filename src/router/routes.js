@@ -1,12 +1,12 @@
 import store from '@/store';
-import Home from "../views/Home";
-import About from '../views/About'
-import Coaches from "../views/Coaches";
-import Login from "../views/Login";
-import Welcome from "../views/Welcome";
-import GetStarted from "../views/GetStarted";
-import Blog from "../views/Blog";
-import Register from "../views/Register";
+import Home from "@/views/Home";
+import Coaches from "@/views/Coaches";
+import Login from "@/views/Login";
+import Welcome from "@/views/Welcome";
+import GetStarted from "@/views/GetStarted";
+import Blog from "@/views/Blog";
+import Register from "@/views/Register";
+import PageNotFound from "@/views/PageNotFound";
 
 const routes = [
     {
@@ -16,15 +16,6 @@ const routes = [
         component: Welcome,
         meta: {
             title: 'Minor Insights',
-            isPublic: true,
-        }
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: About,
-        meta: {
-            title: 'Minor Insights - About',
             isPublic: true,
         }
     },
@@ -121,6 +112,7 @@ const routes = [
     {
         path: '*',
         name: 'page.not.found',
+        component: PageNotFound,
         meta: {
             title: 'page.notFound',
             isPublic: true

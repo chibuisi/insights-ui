@@ -11,8 +11,7 @@
 
       <nav id="navbar" class="navbar" v-if="isIndexPage()">
         <ul>
-<!--          <li><router-link class="nav-link scrollto" to="/index">Home</router-link></li>-->
-          <li><router-link class="nav-link scrollto" to="/about">About</router-link></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><router-link class="nav-link scrollto" to="/team">Team</router-link></li>
           <li><router-link to="/blog">Blog</router-link></li>
           <li class="dropdown"><router-link to="/services"><span>Services</span> <i class="bi bi-chevron-down dropdown-indicator"></i></router-link>
