@@ -9,7 +9,8 @@
           <div class="service-item position-relative">
             <div class="icon"><i class="bi bi-app-indicator icon"></i></div>
             <h4><a href="" class="stretched-link">Why</a></h4>
-            <p>We want to keep you informed and updated on your interests</p>
+            <p>Discover a transformative system designed to help you reclaim your focus, overcome distractions,
+              and achieve remarkable success, because your potential deserves to be realized.</p>
           </div>
         </div><!-- End Service Item -->
 
@@ -17,8 +18,8 @@
           <div class="service-item position-relative">
             <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
             <h4><a href="" class="stretched-link">What</a></h4>
-            <p>We got several topics that will align with you and a vast database on the topics. Also we have expert
-              coaches on the topics</p>
+            <p>Unlock a game-changing system that combines state-of-the-art technology, expert coaching, and curated resources
+              to elevate your focus, boost productivity, and propel you towards extraordinary achievements.</p>
           </div>
         </div><!-- End Service Item -->
 
@@ -26,8 +27,8 @@
           <div class="service-item position-relative">
             <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
             <h4><a href="" class="stretched-link">How</a></h4>
-            <p>We let you subscribe to topics that relate to you. We have something for everyone, both young and old.
-              You will also get to meet our coaches</p>
+            <p>Through our innovative blend of intelligent algorithms, personalized coaching, and dynamic resources,
+              we empower you to cultivate laser-like focus, amplify your productivity, and master the art of achieving your goals with precision.</p>
           </div>
         </div><!-- End Service Item -->
 
@@ -35,8 +36,8 @@
           <div class="service-item position-relative">
             <div class="icon"><i class="bi bi-broadcast icon"></i></div>
             <h4><a href="" class="stretched-link">When</a></h4>
-            <p>Our delivery system allows you to customize when you get notified. You choose between email,
-              SMS and/or regular phone notifications as well as the exact time for it. We respect your focus time</p>
+            <p>Experience the advantage of real-time insights, timely updates, and on-demand access, ensuring you never
+              miss a beat and stay ahead in the pursuit of your goals.</p>
           </div>
         </div><!-- End Service Item -->
 

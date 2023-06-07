@@ -8,3 +8,21 @@ disable register button if any validation error - not required atm
 add a spinner while loading - done
 complete the index page - in progress
 create user page - in progress
+user page nav items - my topics(engage), manage my subscriptions, coach meetings, assessments, my profile, settings
+implement forgot password - 8
+Backend
+1. add resetToken, tokenValidity field to user - done
+2. create endpoint that sends password reset email
+    create controller, service, models, utils (token generator) - done
+    update reset password email template - done
+    make endpoint public - done
+3. create endpoint that handles password updates
+4. Send password reset confirmation email.
+
+Frontend
+1. create ForgotPassword.vue (form items and validation)
+2. create action for sendResetPasswordEmail (http request using axios)
+3. create action for updatePassword (http request using axios)
+
+load boot - topics, subscriptions, recent/top articles, recent/top news, coaches - 8
+user profile settings - 5

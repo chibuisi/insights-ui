@@ -1,5 +1,5 @@
 import store from '@/store';
-import Home from "@/views/Home";
+import User from "@/views/User";
 import Coaches from "@/views/Coaches";
 import Login from "@/views/Login";
 import Welcome from "@/views/Welcome";
@@ -7,6 +7,8 @@ import GetStarted from "@/views/GetStarted";
 import Blog from "@/views/Blog";
 import Register from "@/views/Register";
 import PageNotFound from "@/views/PageNotFound";
+import Topics from "@/views/Topics";
+import Coach from "../views/Coach";
 
 const routes = [
     {
@@ -26,6 +28,22 @@ const routes = [
         meta: {
             title: 'Minor Insights - Login',
             isPublic: true,
+        },
+        beforeEnter(to, from, next){
+            const isLoggedIn = store.getters['auth/isLoggedIn'];
+            if(isLoggedIn) {
+                const { ...nextRoute } = from;
+                nextRoute.name = from.name;
+
+                if(!from.name) {
+                    nextRoute.name = 'welcome'
+                }
+
+                nextRoute.replace = true;
+
+                next(nextRoute);
+            }
+            next();
         }
     },
     {
@@ -42,7 +60,16 @@ const routes = [
         name: 'coaches',
         component: Coaches,
         meta: {
-            title: 'Minor Insights - Coaches'
+            title: 'Minor Insights - Coaches',
+            isPublic: true
+        }
+    },
+    {
+        path: '/coach',
+        name: 'coach',
+        component: Coach,
+        meta: {
+            title: 'Minor Insights - Coach'
         },
         beforeEnter(to, from, next){
             const hasCoachRole = store.getters['auth/hasCoachRole'];
@@ -59,9 +86,9 @@ const routes = [
         }
     },
     {
-        path: '/home',
-        name: 'home',
-        component: Home,
+        path: '/user',
+        name: 'user',
+        component: User,
         meta: {
             title: 'Minor Insights - User Home'
         }
@@ -106,6 +133,15 @@ const routes = [
         component: Blog,
         meta: {
             title: 'Minor Insights - Blog',
+            isPublic: true
+        }
+    },
+    {
+        path: '/topics',
+        name: 'topics',
+        component: Topics,
+        meta: {
+            title: 'Minor Insights - Topics',
             isPublic: true
         }
     },

@@ -9,6 +9,11 @@
     <service-section />
     <testimonials />
     <our-pricing />
+    <faq-section />
+    <team-section />
+    <recent-blogs />
+    <contact-section />
+    <footer-section />
   </div>
 </template>
 
@@ -22,6 +27,11 @@ import OnFocusSection from "../components/OnFocusSection";
 import ServiceSection from "../components/ServiceSection";
 import Testimonials from "../components/Testimonials";
 import OurPricing from "../components/OurPricing";
+import FaqSection from "../components/FaqSection";
+import TeamSection from "../components/TeamSection";
+import RecentBlogs from "../components/RecentBlogs";
+import ContactSection from "../components/ContactSection";
+import FooterSection from "../components/FooterSection";
 
 export default {
   name: "Welcome",
@@ -36,6 +46,11 @@ export default {
     'service-section' : ServiceSection,
     'testimonials' : Testimonials,
     'our-pricing' : OurPricing,
+    'faq-section' : FaqSection,
+    'team-section' : TeamSection,
+    'recent-blogs' : RecentBlogs,
+    'contact-section' : ContactSection,
+    'footer-section' : FooterSection,
   }
 }
 </script>

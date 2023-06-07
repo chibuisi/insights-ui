@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-if="isPageSupported">
+    <div v-if="!isPageSupported">
       <page-not-found/>
     </div>
     <main v-else>
-      <header-component />
+      <header-component v-if="shouldShowHeader"/>
       <section>
         <router-view />
       </section>
@@ -24,15 +24,39 @@ export default {
     'header-component': HeaderComponent,
     'page-not-found': PageNotFound,
   },
-
+  data() {
+    return {
+      permittedRoutesForHeader: ['login', 'register', 'welcome'],
+      showHeader: true,
+    }
+  },
   computed: {
     ...mapState({
       title: ({ route }) => route.meta.title,
+      routeName: ({ route }) => route.name,
+      isLoggedIn: 'auth/isLoggedIn',
     }),
 
     isPageSupported() {
-      return this.title === 'page.notFound';
+      return this.routeName !== 'page.not.Found';
+    },
+    // isWelcomePage() {
+    //   return this.routeName === 'welcome';
+    // },
+    shouldShowHeader() {
+      return this.permittedRoutesForHeader.includes(this.routeName);
     }
+  },
+
+  watch: {
+    isLoggedIn: {
+      handler(newValue, oldValue) {
+        if (newValue && !oldValue) {
+          // this.$store.dispatch('LOAD_BOOT');
+        }
+      }
+    },
+    immediate: true,
   }
 
 }

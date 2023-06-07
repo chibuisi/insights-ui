@@ -10,6 +10,16 @@ export default {
         return name ? name.charAt(0).toUpperCase() + name.slice(1) : username;
     },
 
+    getUserProfile: ({ user }) => {
+        return {
+            firstname: user.givenName,
+            lastname: user.familyName,
+            fullname: `${user.givenName} ${user.familyName}`,
+            title: user.title,
+            jobTitle: user.jobTitle,
+        }
+    },
+
     hasCoachRole: ({ hasCoachRole }) => {
         return hasCoachRole;
     },

@@ -13,14 +13,16 @@ export const beforeEachRoute = ( to, from, next ) => {
     next();
 }
 
-export const beforeResolveRoute = async ( to, _, next, store ) => {
+export const beforeResolveRoute = async ( to, from, next, store ) => {
     await store.dispatch('auth/VERIFY_LOGIN');
 
     const isLoggedIn = store.getters['auth/isLoggedIn'];
 
     if(!isLoggedIn && !to.meta.isPublic) {
-        if(to.meta.title === 'login')
-            window.location.assign(`/login?redirect=home`);
+        //if navigation is to a login page then do not set the redirect. Redirect will be decided after login
+
+        if(!from.name || from.meta.title === 'welcome' || from.meta.title === 'login')
+            window.location.assign(`/login`);
         else
             window.location.assign(`/login?redirect=${to.name}`);
         return next(false);

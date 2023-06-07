@@ -28,11 +28,15 @@ const login = async ({commit}, {data}) => {
         commit('SESSION_FAIL')
          if(error.code === 'ERR_NETWORK')
              commit('SET_AUTH_FAILED_REASON', error.message)
+         if(error.code === 'ERR_BAD_RESPONSE' || error.code === 'ECONNABORTED')
+             commit('SET_AUTH_FAILED_REASON', 'Problem occurred, try again later')
+         if(error.code === 'ERR_BAD_REQUEST')
+             commit('SET_AUTH_FAILED_REASON', 'Invalid Username or Password')
         console.log(error);
     });
     if(jwt){
         try {
-            const {id, email, firstName, lastName, authorities, exp} = jwtDecode(jwt);
+            const {id, email, firstname, lastname, authorities, exp} = jwtDecode(jwt);
 
             if (isJwtExpired(exp)) {
                 commit('SESSION_END');
@@ -40,9 +44,9 @@ const login = async ({commit}, {data}) => {
                 const user = {
                     id: id,
                     username: email,
-                    givenName: firstName,
-                    familyName: lastName,
-                    fullName: firstName + ' ' + lastName,
+                    givenName: firstname,
+                    familyName: lastname,
+                    fullName: firstname + ' ' + lastname,
                     exp: exp,
                     authorities: authorities
                 };

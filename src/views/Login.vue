@@ -108,6 +108,7 @@ export default {
     ...mapGetters({
       isLoggedIn: 'auth/isLoggedIn',
       authFailedReason: 'auth/getAuthFailedReason',
+      hasCoachRole: 'auth/hasCoachRole'
     }),
     redirect() {
       const { redirect } = this.query;
@@ -140,18 +141,23 @@ export default {
       await this.$store.dispatch('auth/VERIFY_LOGIN');
 
       if (this.isLoggedIn) {
+        //if redirect is set then we can redirect. Otherwise we can go to coach or user
         if(this.redirect) {
-          if(this.redirect === 'login')
-            this.redirect = 'home';
-
           await this.$router.push({
             name: this.redirect, replace: true
           })
 
           this.isLoggingIn = false;
         }
+        //if coach go to coach
+        if(this.hasCoachRole) {
+          await this.$router.push({
+            name: 'coach'
+          })
+        }
+        //otherwise go to user
         await this.$router.push({
-          name: 'home'
+          name: 'user'
         })
         this.isLoggingIn = false;
       }
