@@ -205,7 +205,7 @@ export default {
       password: {
         required: helpers.withMessage('This field cannot be empty', required),
         regex: helpers.withMessage('Only characters, numbers, #, $, @ and . allowed', helpers.regex(/^[a-zA-Z0-9#$@.]+$/)),
-        minLength: helpers.withMessage('Maximum length of 6 characters',minLength(6)),
+        minLength: helpers.withMessage('Minimum length of 6 characters',minLength(6)),
         maxLength: helpers.withMessage('Maximum length of 50 characters', maxLength(50)),
       },
       password2: {

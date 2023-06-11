@@ -37,7 +37,7 @@
       <div class="row mb-4">
         <div class="col">
           <!-- Simple link -->
-          <a href="">Forgot password?</a>
+          <router-link to="/reset-password">Forgot password?</router-link>
         </div>
       </div>
 
@@ -187,7 +187,7 @@ export default {
   box-sizing: border-box
 }
 
-.btn.btn-primary.btn-block.mb-4 {
+.btn {
   background: var(--color-primary);
 }
 

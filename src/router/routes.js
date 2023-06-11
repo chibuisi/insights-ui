@@ -9,6 +9,8 @@ import Register from "@/views/Register";
 import PageNotFound from "@/views/PageNotFound";
 import Topics from "@/views/Topics";
 import Coach from "../views/Coach";
+import ResetPassword from "../views/reset-password/ResetPassword";
+import UpdatePassword from "../views/reset-password/UpdatePassword";
 
 const routes = [
     {
@@ -146,6 +148,31 @@ const routes = [
         }
     },
     {
+        path: '/reset-password',
+        name: 'resetPassword',
+        component: ResetPassword,
+        meta: {
+            title: 'Minor Insights - Reset Password',
+            isPublic: true
+        }
+    },
+    {
+        path: '/update-password',
+        name: 'updatePassword',
+        component: UpdatePassword,
+        meta: {
+            title: 'Minor Insights - Update Password',
+            isPublic: true
+        },
+        // eslint-disable-next-line no-unused-vars
+        beforeEnter: (to, from, next) => {
+            const { query } = to
+            if(!query.email || !query.token)
+                return cancelNavigation(to, from, next)
+            next();
+        }
+    },
+    {
         path: '*',
         name: 'page.not.found',
         component: PageNotFound,
@@ -155,5 +182,18 @@ const routes = [
         }
     }
 ]
+
+const cancelNavigation = (to, from, next) => {
+    const { ...nextRoute } = from;
+    nextRoute.name = from.name;
+
+    if(!from.name) {
+        nextRoute.name = 'welcome'
+    }
+
+    nextRoute.replace = true;
+
+    next(nextRoute);
+}
 
 export default routes;

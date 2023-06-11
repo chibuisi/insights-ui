@@ -1,3 +1,13 @@
+urls
+https://getbootstrap.com/docs/4.0/content/reboot/
+https://getbootstrap.com/docs/4.0/examples/
+https://themes.getbootstrap.com/
+https://icons.getbootstrap.com/?q=user
+https://mdbootstrap.com/docs/standard/layout/columns/
+https://mdbootstrap.com/docs/standard/
+https://vuelidate-next.netlify.app/custom_validators.html
+https://vuelidate-next.netlify.app/guide.html#setting-dirty-state-with-autodirty
+https://router.vuejs.org/guide/advanced/navigation-guards.html
 add required routes to routes done
 create page-not-found page - done
 Create logo
@@ -26,3 +36,5 @@ Frontend
 
 load boot - topics, subscriptions, recent/top articles, recent/top news, coaches - 8
 user profile settings - 5
+
+http://localhost:20340/update-password?email=tre&token=yiuo
