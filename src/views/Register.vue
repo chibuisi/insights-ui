@@ -13,7 +13,7 @@
                   <form @submit.prevent="register" ref="registerForm" class="mx-1 mx-md-4" novalidate>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="text" id="firstname" :disabled="isSubmitting" :class="{ 'is-invalid': v$.firstname.$error }"
                                class="form-control" v-model="firstname" @blur="v$.firstname.$touch" required/>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="text" id="lastname" :disabled="isSubmitting" :class="{ 'is-invalid': v$.lastname.$error }"
                                class="form-control" v-model="lastname" @blur="v$.lastname.$touch" required/>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="email" id="email" :disabled="isSubmitting" :class="{ 'is-invalid': v$.email.$error }"
                                class="form-control" v-model="email" @blur="v$.email.$touch" required/>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="text" id="username" :disabled="isSubmitting" :class="{ 'is-invalid': v$.username.$error }"
                                class="form-control" v-model="username" @keypress="v$.username.$pending && v$.username.$touch"
@@ -58,12 +58,12 @@
                           <div class="error-msg">{{ error.$message }}</div>
                         </div>
                         <span v-if="v$.username.$pending" class="spinner-border text-info spinner-border-username" role="status"></span>
-                        <label class="form-label" for="username">Username <span style="color: #3a4753">[Optional]</span></label>
+                        <label class="form-label" for="username">Username</label>
                       </div>
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="password" id="password" :disabled="isSubmitting" :class="{ 'is-invalid': v$.password.$error }"
                                @blur="v$.password.$touch" class="form-control" v-model="password" required/>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+<!--                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>-->
                       <div class="form-outline flex-fill mb-0 form-outline-error-control">
                         <input type="password" id="password2" :disabled="isSubmitting" @blur="v$.password2.$touch"
                                :class="{ 'is-invalid': v$.password2.$error }" class="form-control" v-model="password2" required/>
@@ -88,14 +88,14 @@
 
                     <div class="form-check d-flex justify-content-center mb-5 form-outline-error-control">
                       <input class="form-check-input me-2" :disabled="isSubmitting" @blur="v$.agreeToEula.$touch"
-                             @change="v$.agreeToEula.$touch" v-model="agreeToEula"
+                             @change="v$.agreeToEula.$touch" v-model="agreeToEula" style="position: relative"
                              :class="{ 'is-invalid': v$.agreeToEula.$error }" type="checkbox"
                              value="" id="agreeToEula" required/>
                       <div class="input-errors input-errors-right" v-for="error of v$.agreeToEula.$errors" :key="error.$uid">
                         <div class="error-msg">{{ error.$message }}</div>
                       </div>
-                      <label class="form-check-label" for="agreeToEula">
-                        I agree all statements in <a href="#!">Terms of service</a>
+                      <label class="form-check-label" for="agreeToEula" style="position: relative">
+                        I agree to all statements in <a href="#!">Terms of service</a>
                       </label>
                     </div>
 
@@ -122,9 +122,8 @@
                     <hr>
 
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        Already a user? <router-link to="/login"> Sign in</router-link>
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">Already a user? <router-link to="/login"> Sign in</router-link>
                       </div>
                     </div>
 

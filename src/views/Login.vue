@@ -1,59 +1,63 @@
 <template>
-  <div class="login-container">
-    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-    <form @submit.prevent="login" novalidate>
-      <!-- Error row -->
-      <div class="form-outline mb-4" v-if="showModal">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: relative">
-          <strong>{{errorMessage}}</strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal"
-          style="position: absolute; right: 5%">
-            <i class="bi bi-x"></i>
-          </button>
+  <div class="container">
+    <toast v-if="showResetPasswordToast" message="Your password has been successfully reset. Please login." title="Password Reset" ref="toast"/>
+    <div class="login-container">
+      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+      <form @submit.prevent="login" novalidate>
+        <!-- Error row -->
+        <div class="form-outline mb-4" v-if="showModal">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: relative">
+            <strong>{{errorMessage}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal"
+                    style="position: absolute; right: 5%">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- Email input -->
-      <div class="form-outline mb-4 form-outline-error-control">
-        <input type="email" id="user" class="form-control" v-model="user" :disabled="isLoggingIn"
-               :class="{ 'is-invalid': v$.user.$error }" @blur="v$.user.$touch" required/>
-        <div class="input-errors input-errors-right" v-for="error of v$.user.$errors" :key="error.$uid">
-          <div class="error-msg">{{ error.$message }}</div>
+        <!-- Email input -->
+        <div class="form-outline mb-4 form-outline-error-control">
+          <input type="email" id="user" class="form-control" v-model="user" :disabled="isLoggingIn"
+                 :class="{ 'is-invalid': v$.user.$error }" @blur="v$.user.$touch" required/>
+          <div class="input-errors input-errors-right" v-for="error of v$.user.$errors" :key="error.$uid">
+            <div class="error-msg">{{ error.$message }}</div>
+          </div>
+          <label class="form-label" for="user">Username/Email</label>
         </div>
-        <label class="form-label" for="user">Username/Email</label>
-      </div>
 
-      <!-- Password input -->
-      <div class="form-outline mb-4 form-outline-error-control">
-        <input type="password" id="password" class="form-control" v-model="password" :disabled="isLoggingIn"
-               :class="{ 'is-invalid': v$.password.$error }" @blur="v$.password.$touch" required/>
-        <div class="input-errors input-errors-right" v-for="error of v$.password.$errors" :key="error.$uid">
-          <div class="error-msg">{{ error.$message }}</div>
+        <!-- Password input -->
+        <div class="form-outline mb-4 form-outline-error-control">
+          <input type="password" id="password" class="form-control" v-model="password" :disabled="isLoggingIn"
+                 :class="{ 'is-invalid': v$.password.$error }" @blur="v$.password.$touch" required/>
+          <div class="input-errors input-errors-right" v-for="error of v$.password.$errors" :key="error.$uid">
+            <div class="error-msg">{{ error.$message }}</div>
+          </div>
+          <label class="form-label" for="password">Password</label>
         </div>
-        <label class="form-label" for="password">Password</label>
-      </div>
 
-      <!-- 2 column grid layout for inline styling -->
-      <div class="row mb-4">
-        <div class="col">
-          <!-- Simple link -->
-          <router-link to="/reset-password">Forgot password?</router-link>
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col">
+            <!-- Simple link -->
+            <router-link to="/reset-password">Forgot password?</router-link>
+          </div>
         </div>
-      </div>
 
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="isLoggingIn">
-        <span v-if="!isLoggingIn">Sign in</span>
-        <span v-else>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="isLoggingIn">
+          <span v-if="!isLoggingIn">Sign in</span>
+          <span v-else>
           <span class="spinner-border text-light" role="status"></span>
         </span>
-      </button>
+        </button>
 
-      <!-- Register buttons -->
-      <div class="text-center">
-        <p>Not a member? <router-link to="/register">Register</router-link></p>
-      </div>
-    </form>
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <router-link to="/register">Register</router-link></p>
+        </div>
+      </form>
+
+    </div>
   </div>
 </template>
 
@@ -61,9 +65,14 @@
 import {mapGetters, mapState} from "vuex";
 import useVuelidate from '@vuelidate/core'
 import { helpers, maxLength, required } from '@vuelidate/validators';
+import Toast from "../components/Toast";
 
 export default {
   name: "Login",
+
+  components: {
+    'toast' : Toast
+  },
 
   setup () {
     return { v$: useVuelidate() }
@@ -76,7 +85,7 @@ export default {
       isLoggingIn: false,
       errorMessage: 'Invalid Username or Password    ',
       showModal: false,
-      loginStatus: ''
+      loginStatus: '',
     }
   },
 
@@ -99,7 +108,6 @@ export default {
 
   },
   async mounted() {
-
   },
   computed: {
     ...mapState({
@@ -114,12 +122,15 @@ export default {
       const { redirect } = this.query;
       return String(redirect);
     },
+    showResetPasswordToast() {
+      const { rpt } = this.query;
+      return Boolean(rpt);
+    }
   },
   methods: {
     resetShowModal() {
       this.showModal = false;
     },
-
     async login() {
       if(this.isLoggingIn)
         return;

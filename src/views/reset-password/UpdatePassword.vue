@@ -56,9 +56,10 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState, mapGetters} from "vuex";
 import useVuelidate from '@vuelidate/core'
 import {helpers, minLength, maxLength, required, sameAs} from '@vuelidate/validators';
+import {SUCCESS} from "../../shared/constants/loadingStatueses.constants";
 
 export default {
   name: "UpdatePassword",
@@ -95,6 +96,9 @@ export default {
     ...mapState({
       query: ({route}) => Object(route.query),
     }),
+    ...mapGetters({
+
+    }),
     email() {
       return this.query.email;
     },
@@ -109,7 +113,30 @@ export default {
         return;
       }
       this.isSubmitting = true;
+
+      const data = {
+        emailOrUsername: this.email,
+        password: this.password,
+        token: this.token
+      }
+
+      const response = await this.$store.dispatch('auth/UPDATE_PASSWORD', {data});
+
+      if(response === SUCCESS){
+        await this.$router.push({
+          name: 'login',
+          query: {
+            rpt: true,
+          }
+        })
+      } else {
+        this.submitResult = "Unable to complete request at this time. Please try again"
+      }
+
+      this.isSubmitting = false;
       this.showModal = true;
+
+
     }
   }
 }

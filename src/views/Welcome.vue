@@ -36,7 +36,6 @@ import FooterSection from "../components/FooterSection";
 export default {
   name: "Welcome",
   components: {
-    FeaturedServices: FeaturedServices,
     'banner-component': BannerComponent,
     'featured-services' : FeaturedServices,
     'about-us' : AboutUs,

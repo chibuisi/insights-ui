@@ -27,6 +27,10 @@ export default {
 
     SET_AUTH_FAILED_REASON(state, failedReason) {
         state.failedReason = failedReason;
+    },
+
+    SET_RESET_PASSWORD_RESPONSE(state, response) {
+        state.sendResetPasswordEmailResponse = response;
     }
 
 }

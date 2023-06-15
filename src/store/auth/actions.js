@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import {SUCCESS, ERROR} from "../../shared/constants/loadingStatueses.constants";
 
 export default {
     LOGIN(context, payload) {
@@ -13,6 +14,14 @@ export default {
     LOGOUT({commit}) {
         commit('SESSION_END');
     },
+
+    RESET_PASSWORD(context, payload) {
+        return sendResetPasswordEmail(context, payload);
+    },
+
+    UPDATE_PASSWORD(context, payload) {
+        return updatePassword(payload);
+    }
 }
 
 const login = async ({commit}, {data}) => {
@@ -69,8 +78,6 @@ const login = async ({commit}, {data}) => {
     else {
         commit('SESSION_FAIL');
     }
-
-
 }
 
 const verifyLogin = ({state, commit}) => {
@@ -84,4 +91,35 @@ const isJwtExpired = (exp) => {
         return exp * 1000 < Date.now();
     }
     return true;
+}
+
+const sendResetPasswordEmail = async ({commit}, {data}) => {
+    const sendResetPasswordEmailUrl = `${process.env.VUE_APP_SERVICE_URL}/reset/sendEmail`;
+    const timeoutInMilli = 10000;
+    const requestConfig = {};
+    requestConfig.timeout = timeoutInMilli;
+
+    // eslint-disable-next-line no-unused-vars
+    await axios.post(sendResetPasswordEmailUrl, data, requestConfig).then((response) => {
+        commit('SET_RESET_PASSWORD_RESPONSE', SUCCESS)
+        // eslint-disable-next-line no-unused-vars
+    }).catch((error) => {
+        commit('SET_RESET_PASSWORD_RESPONSE', ERROR)
+    });
+}
+
+const updatePassword = async ({data}) => {
+    const updatePasswordUrl = `${process.env.VUE_APP_SERVICE_URL}/reset/updatePassword`;
+    const timeoutInMilli = 10000;
+    const requestConfig = {};
+    requestConfig.timeout = timeoutInMilli;
+
+    try {
+        const response = await axios.post(updatePasswordUrl, data, requestConfig)
+        if(response.status === 200)
+            return SUCCESS;
+    } catch(error) {
+        console.log(error);
+        return ERROR;
+    }
 }

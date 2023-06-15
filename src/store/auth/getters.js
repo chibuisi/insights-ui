@@ -27,4 +27,9 @@ export default {
     getAuthFailedReason: ({ failedReason }) => {
         return failedReason;
     },
+
+    getResetPasswordEmailResponse: ( { sendResetPasswordEmailResponse }) => {
+        return sendResetPasswordEmailResponse;
+    },
+
 }

@@ -5,4 +5,5 @@ export default {
     user: {},
     hasCoachRole: false,
     hasManagerRole: false,
+    sendResetPasswordEmailResponse: '',
 }

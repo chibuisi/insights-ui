@@ -47,6 +47,8 @@
 <script>
 import useVuelidate from '@vuelidate/core'
 import { helpers, maxLength, required } from '@vuelidate/validators';
+import {mapGetters} from "vuex";
+import {SUCCESS} from "../../shared/constants/loadingStatueses.constants";
 
 export default {
   name: "ResetPassword",
@@ -58,7 +60,7 @@ export default {
       user: '',
       isSubmitting: false,
       showModal: false,
-      submitResult: 'Invalid Username or Email    ',
+      submitResult: '',
     }
   },
   validations() {
@@ -81,14 +83,26 @@ export default {
       }
 
       this.isSubmitting = true;
-      this.showModal = true;
 
       const data = {
-        user: this.user,
+        emailOrUsername: this.user,
       }
 
-      await this.$store.dispatch('profile/RESET_PASSWORD', {data});
+      await this.$store.dispatch('auth/RESET_PASSWORD', {data});
+
+      if(this.sendResetPasswordEmailResponse === SUCCESS)
+        this.submitResult = 'Reset password email sent to your mailbox.';
+      else
+        this.submitResult = 'Unable to complete request. Try again later.';
+
+      this.isSubmitting = false;
+      this.showModal = true;
     }
+  },
+  computed: {
+    ...mapGetters({
+      sendResetPasswordEmailResponse: 'auth/getResetPasswordEmailResponse',
+    }),
   }
 }
 </script>
