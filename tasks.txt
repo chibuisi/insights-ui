@@ -27,9 +27,9 @@ Backend
     update reset password email template - done
     make endpoint public - done
 3. create endpoint that handles password updates - done
-4. Send password reset confirmation email - in progress
+4. Send password reset confirmation email - done
 
-Frontend
+Frontden
 1. create ResetPassword.vue (form items and validation) - done
 2. create action for sendResetPasswordEmail (http request using axios) - done
 3. create action for updatePassword (http request using axios) - done

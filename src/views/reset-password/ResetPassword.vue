@@ -8,7 +8,7 @@
           Enter your email address or username and we'll send you an email with instructions to reset your password.
         </p>
         <div class="form-outline mb-4" v-if="showModal">
-          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: relative">
+          <div class="alert alert-dismissible fade show" :class="{ 'alert-success': submitSuccess, 'alert-warning' : !submitSuccess }" role="alert" style="position: relative">
             <strong>{{submitResult}}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="resetShowModal"
                     style="position: absolute; right: 5%">
@@ -61,6 +61,7 @@ export default {
       isSubmitting: false,
       showModal: false,
       submitResult: '',
+      submitSuccess: false,
     }
   },
   validations() {
@@ -90,10 +91,14 @@ export default {
 
       await this.$store.dispatch('auth/RESET_PASSWORD', {data});
 
-      if(this.sendResetPasswordEmailResponse === SUCCESS)
+      if(this.sendResetPasswordEmailResponse === SUCCESS) {
+        this.submitSuccess = true;
         this.submitResult = 'Reset password email sent to your mailbox.';
-      else
+      }
+      else {
+        this.submitSuccess = false;
         this.submitResult = 'Unable to complete request. Try again later.';
+      }
 
       this.isSubmitting = false;
       this.showModal = true;
