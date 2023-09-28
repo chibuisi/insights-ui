@@ -36,7 +36,7 @@ const login = async ({commit}, {data}) => {
     }).catch((error) => {
         commit('SESSION_FAIL')
          if(error.code === 'ERR_NETWORK')
-             commit('SET_AUTH_FAILED_REASON', error.message)
+             commit('SET_AUTH_FAILED_REASON', 'Unable to log in, please check back again')
          if(error.code === 'ERR_BAD_RESPONSE' || error.code === 'ECONNABORTED')
              commit('SET_AUTH_FAILED_REASON', 'Problem occurred, try again later')
          if(error.code === 'ERR_BAD_REQUEST')

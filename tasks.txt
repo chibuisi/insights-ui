@@ -29,12 +29,58 @@ Backend
 3. create endpoint that handles password updates - done
 4. Send password reset confirmation email - done
 
-Frontden
+Frontend
 1. create ResetPassword.vue (form items and validation) - done
 2. create action for sendResetPasswordEmail (http request using axios) - done
 3. create action for updatePassword (http request using axios) - done
 
-load boot - topics, subscriptions, recent/top articles, recent/top news, coaches - 8
+load boot - topics, featured articles, news, coaches and topics.
 user profile settings - 5
 
 introduce/implement rate limiting - 8
+Milestone 2: Platform Development
+Develop the core platform infrastructure:
+* User registration (done),
+* authentication (done)
+* boot on home page - in progress 20%
+* profile management. - next
+* get started
+Implement the topic exploration feature:
+* allowing users to browse and access curated content on various subjects.
+Build a responsive and user-friendly web application interface.
+Milestone 3: Expert Coaching Integration
+Develop the expert coaching module, enabling users to connect with experienced coaches.
+Implement user-coach matching functionality based on user preferences and goals.
+Enable virtual meetings, discussions, and feedback sessions between users and coaches.
+Milestone 4: Resource Management and Community Features
+Implement resource management system for organizing and delivering valuable articles, blogs, and resources.
+Set up interactive discussion boards, forums, and social features for community interaction.
+Plan and conduct virtual events, workshops, and meetups for users to connect and engage with each other.
+Milestone 5: Pricing and Subscription Management
+Integrate a flexible pricing system, allowing users to select from different subscription plans.
+Implement secure payment gateway integration for seamless subscription management.
+Develop user-friendly account management features for users to update their subscription preferences.
+Milestone 6: Testing and Quality Assurance
+Conduct thorough testing of all platform features and functionalities.
+Identify and resolve any bugs or performance issues.
+Perform usability testing and gather user feedback for further improvements.
+
+To create content use a template.
+To create a template, start from an empty design json that will be specified on file
+
+List all template when you click templates and include a button to create new template
+When click on new template, show new template modal containing template name, topic, category etc
+open unlayer and load a design json from file.
+
+Provide a filter to choose topic. When chosen topic, list all articles in a paginated lists showing name, author,
+datePublished and last updated. Also Provide a button to create a new article.
+New articles will use a specific template.
+
+When click new article, show the new article modal showing fields to select template of topic name, article topic etc
+When click next, load the design json in unlayer
+
+Dashboard can show: Topics - 3, Read Articles - 5, Engagement - 47%, Assessment -
+
+Get Started
+Enter email, Confirm Email, Create Password, Log In as new user, Display Choose Plan,
+* Email Page - enter email, click continue

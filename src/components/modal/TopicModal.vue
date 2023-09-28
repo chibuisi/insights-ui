@@ -10,12 +10,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body text-justify">
+          <div class="modal-body text-justify" style="padding: 0 35px">
             {{topic.detail}}
           </div>
           <div class="modal-footer">
             <router-link :to="{ path: '/coaches', query: { topicId: topic.id } }" class=""
-            style="position:absolute; left: 10px" data-dismiss="modal">view coaches</router-link>
+            style="position:absolute; left: 10px; color: #0ea2bd" data-dismiss="modal">view coaches</router-link>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import HeaderComponent from "./components/HeaderComponent";
+import HeaderComponent from "./components/home/HeaderComponent.vue";
 import PageNotFound from "./views/PageNotFound";
 import { mapState } from 'vuex';
 

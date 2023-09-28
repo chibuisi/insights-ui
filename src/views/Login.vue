@@ -47,8 +47,8 @@
         <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="isLoggingIn">
           <span v-if="!isLoggingIn">Sign in</span>
           <span v-else>
-          <span class="spinner-border text-light" role="status"></span>
-        </span>
+            <span class="spinner-border text-light" role="status"></span>
+          </span>
         </button>
 
         <!-- Register buttons -->
@@ -160,15 +160,8 @@ export default {
 
           this.isLoggingIn = false;
         }
-        //if coach go to coach
-        if(this.hasCoachRole) {
-          await this.$router.push({
-            name: 'coach'
-          })
-        }
-        //otherwise go to user
         await this.$router.push({
-          name: 'user'
+          path: '/user/dashboard'
         })
         this.isLoggingIn = false;
       }

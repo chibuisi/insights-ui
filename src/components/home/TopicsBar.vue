@@ -1,13 +1,17 @@
 <template>
-  <main id="main">
+  <main id="topics">
     <section id="topics" class="clients">
       <div class="container" data-aos="zoom-out">
+
+        <div class="section-header">
+          <h3>Featured Topics</h3>
+        </div>
 
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
             <div v-for="topic in topics" :key="topic.id" class="swiper-slide">
               <h3>
-                <a data-toggle="modal" href="#" class="" data-target="#modalCenter" @click="handleLinkClick(topic)">
+                <a data-toggle="modal" href="#" class="topics-bar" data-target="#modalCenter" @click="handleLinkClick(topic)">
                   {{ topic.name }}
                 </a>
 <!--                <router-link :to="{ path: '/topic', query: { topicId: topic.id } }">-->
@@ -28,7 +32,7 @@
 </template>
 
 <script>
-import TopicModal from "./modal/TopicModal";
+import TopicModal from "../modal/TopicModal.vue";
 
 export default {
   name: "TopicsBar",
@@ -64,5 +68,7 @@ export default {
 </script>
 
 <style scoped>
-
+.topics-bar {
+  color: #0ea2bd;
+}
 </style>

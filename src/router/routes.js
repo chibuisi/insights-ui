@@ -1,16 +1,16 @@
 import store from '@/store';
-import User from "@/views/User";
-import Coaches from "@/views/Coaches";
 import Login from "@/views/Login";
 import Welcome from "@/views/Welcome";
-import GetStarted from "@/views/GetStarted";
+import GetStarted from "@/views/get-started/GetStarted";
 import Blog from "@/views/Blog";
 import Register from "@/views/Register";
 import PageNotFound from "@/views/PageNotFound";
 import Topics from "@/views/Topics";
-import Coach from "../views/Coach";
 import ResetPassword from "../views/reset-password/ResetPassword";
 import UpdatePassword from "../views/reset-password/UpdatePassword";
+import UnlayerProvider from "../views/unlayer/UnlayerProvider.vue";
+import Dashboard from "../components/crm/Dashboard.vue";
+import User from "../views/User.vue";
 
 const routes = [
     {
@@ -58,42 +58,28 @@ const routes = [
         }
     },
     {
-        path: '/coaches',
-        name: 'coaches',
-        component: Coaches,
-        meta: {
-            title: 'Minor Insights - Coaches',
-            isPublic: true
-        }
-    },
-    {
-        path: '/coach',
-        name: 'coach',
-        component: Coach,
-        meta: {
-            title: 'Minor Insights - Coach'
-        },
-        beforeEnter(to, from, next){
-            const hasCoachRole = store.getters['auth/hasCoachRole'];
-
-            if(!hasCoachRole) {
-                const { ...nextRoute } = to;
-                nextRoute.name = 'welcome';
-                nextRoute.replace = true;
-
-                return next(nextRoute);
-            }
-
-            return next();
-        }
-    },
-    {
         path: '/user',
         name: 'user',
         component: User,
-        meta: {
-            title: 'Minor Insights - User Home'
-        }
+        children: [
+            {path: '', component: Dashboard},
+            {
+                path: 'dashboard',
+                component: Dashboard,
+                meta: {
+                    title: 'Minor Insights - Dashboard'
+                },
+                name: 'dashboard'
+            },
+            {
+                path: 'profile',
+                component: Dashboard,
+                meta: {
+                    title: 'Minor Insights - Dashboard'
+                },
+                name: 'profile'
+            },
+        ],
     },
     {
         path: '/logout',
@@ -170,6 +156,15 @@ const routes = [
             if(!query.email || !query.token)
                 return cancelNavigation(to, from, next)
             next();
+        }
+    },
+    {
+        path: '/editor',
+        name: 'editor',
+        component: UnlayerProvider,
+        meta: {
+            title: 'Minor Insights - Editor',
+            isPublic: true
         }
     },
     {

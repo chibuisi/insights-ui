@@ -100,6 +100,12 @@ section {
   color: var(--color-secondary);
 }
 
+.section-header h3 {
+  font-size: 46px;
+  font-weight: 250;
+  color: var(--color-secondary);
+}
+
 .section-header p {
   margin: 0 auto;
   color: var(--color-secondary-light);
