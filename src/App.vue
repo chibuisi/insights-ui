@@ -4,7 +4,7 @@
       <page-not-found/>
     </div>
     <main v-else>
-      <header-component v-if="shouldShowHeader"/>
+      <header-component/>
       <section>
         <router-view />
       </section>
@@ -16,7 +16,7 @@
 <script>
 import HeaderComponent from "./components/home/HeaderComponent.vue";
 import PageNotFound from "./views/PageNotFound";
-import { mapState } from 'vuex';
+import {mapGetters, mapState} from 'vuex';
 
 export default {
 
@@ -26,26 +26,23 @@ export default {
   },
   data() {
     return {
-      permittedRoutesForHeader: ['login', 'register', 'welcome'],
-      showHeader: true,
+
     }
   },
   computed: {
     ...mapState({
       title: ({ route }) => route.meta.title,
       routeName: ({ route }) => route.name,
+    }),
+
+    ...mapGetters({
+      userProfile: 'auth/getUserProfile',
       isLoggedIn: 'auth/isLoggedIn',
     }),
 
     isPageSupported() {
       return this.routeName !== 'page.not.Found';
     },
-    // isWelcomePage() {
-    //   return this.routeName === 'welcome';
-    // },
-    shouldShowHeader() {
-      return this.permittedRoutesForHeader.includes(this.routeName);
-    }
   },
 
   watch: {

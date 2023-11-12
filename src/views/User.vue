@@ -1,219 +1,72 @@
 <template>
-  <div class="home">
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
-
-      <div class="d-flex align-items-center justify-content-between">
-        <router-link to="/index" class="logo d-flex align-items-center">
-          <!--          <img src="assets/img/logo.png" alt="">-->
-          <span class="d-none d-lg-block">Minor Insights.</span>
-        </router-link>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
-
-      <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-      </div><!-- End Search Bar -->
-
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-
-          <li class="nav-item dropdown">
-
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-              <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-
-            </ul><!-- End Notification Dropdown Items -->
-
-          </li><!-- End Notification Nav -->
-
-          <li class="nav-item dropdown">
-
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-              <li class="dropdown-header">
-                You have 3 new messages
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                  <div>
-                    <h4>Maria Hudson</h4>
-                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="#">Show all messages</a>
-              </li>
-
-            </ul><!-- End Messages Dropdown Items -->
-
-          </li><!-- End Messages Nav -->
-
-          <li class="nav-item dropdown pe-3">
-
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <!--              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">-->
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ userProfile.fullname }}</span>
-            </a><!-- End Profile Iamge Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
-                <h6>{{ userProfile.firstname }}</h6>
-                <span>{{ userProfile.jobTitle }}</span>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <router-link class="dropdown-item d-flex align-items-center" to="/logout">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
-                </router-link>
-              </li>
-
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-
-        </ul>
-      </nav><!-- End Icons Navigation -->
-
-    </header><!-- End Header -->
-
+  <div>
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
       <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <span class="nav-link">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </span>
+          <router-link to="dashboard" data-bs-target="#dashboard-nav" data-bs-toggle="collapse">
+            <span class="nav-link" :class="{ 'collapsed': this.$route.name !== 'dashboard' }">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </span>
+          </router-link>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>My Topics</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="components-alerts.html">
-                <i class="bi bi-circle"></i><span>Technology</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-accordion.html">
-                <i class="bi bi-circle"></i><span>Music</span>
-              </a>
-            </li>
-          </ul>
+            <router-link to="user-topics" data-bs-target="#topics-nav" data-bs-toggle="collapse">
+              <span class="nav-link" :class="{ 'collapsed': this.$route.name !== 'user-topics' }">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>My Topics</span>
+              </span>
+            </router-link>
         </li><!-- End My Topics Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>My Notifications</span>
-          </a>
+          <router-link to="notifications" data-bs-target="#notifications-nav">
+            <span :class="{ 'collapsed': this.$route.name !== 'notifications' }" class="nav-link" >
+              <i class="bi bi-journal-text"></i>
+              <span>My Notifications</span>
+            </span>
+          </router-link>
         </li><!-- End My Notifications Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Coach Meetings</span>
-          </a>
+          <router-link to="user-coach-meetings" data-bs-target="#user-coach-meetings-nav" data-bs-toggle="collapse">
+            <span :class="{ 'collapsed': this.$route.name !== 'user-coach-meetings' }" class="nav-link">
+              <i class="bi bi-layout-text-window-reverse"></i>
+              <span>Coach Meetings</span>
+            </span>
+          </router-link>
         </li><!-- End Coach Meetings Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-bar-chart"></i><span>Assessments</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-            <li>
-              <router-link to="">
-                <i class="bi bi-circle"></i><span>My Goals</span>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="">
-                <i class="bi bi-circle"></i><span>Coach Reports & Feedback</span>
-              </router-link>
-            </li>
-          </ul>
+          <router-link to="/user/user-goals" data-bs-target="#user-goals-nav" data-bs-toggle="collapse">
+            <span :class="{ 'collapsed': this.$route.name !== 'user-goals' }" class="nav-link">
+              <i class="bi bi-circle"></i>
+              <span>My Goals</span>
+            </span>
+          </router-link>
+        </li><!-- End My Goals Nav -->
+
+        <li class="nav-item">
+          <router-link to="user-assessments" data-bs-target="#user-assessments-nav" data-bs-toggle="collapse">
+            <span :class="{ 'collapsed': this.$route.name !== 'user-assessments' }" class="nav-link">
+              <i class="bi bi-bar-chart"></i>
+              <span>My Assessments</span>
+            </span>
+          </router-link>
         </li><!-- End Assessments Nav -->
+
+        <li class="nav-item">
+          <router-link to="user-coach-report" data-bs-target="#user-coach-report-nav" data-bs-toggle="collapse">
+            <span :class="{ 'collapsed': this.$route.name !== 'user-coach-report' }" class="nav-link">
+              <i class="bi bi-box"></i>
+              <span>Coach Reports & Feedback</span>
+            </span>
+          </router-link><!-- End Reports/Feedback Nav -->
+        </li>
 
       </ul>
 
@@ -221,14 +74,16 @@
 
     <main id="main" class="main">
 
-    <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
 
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+        &copy; Copyright 2023<strong><span>Minor Insights</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -237,7 +92,8 @@
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
-    </footer><!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   </div>
@@ -254,7 +110,7 @@ export default {
 
   data() {
     return {
-
+      isCollapsed: false,
     }
   },
 
@@ -265,7 +121,8 @@ export default {
 
     ...mapGetters({
       userProfile: 'auth/getUserProfile',
-    })
+      isLoggedIn: 'auth/isLoggedIn',
+    }),
   },
 
   methods: {
@@ -276,11 +133,11 @@ export default {
 
   },
 }
+
 </script>
 
 <style scoped>
 
 @import '/assets/dashboard/assets/css/style.css';
-@import '/assets/dashboard/assets/js/main.js';
 
 </style>

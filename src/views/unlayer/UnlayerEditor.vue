@@ -22,6 +22,7 @@ export default {
 
   mounted() {
     this.initializeEditor();
+    setTimeout( () => this.setDarkMode(), 6000);
   },
 
   methods: {
@@ -86,7 +87,18 @@ export default {
           resolve(pageData);
         });
       });
-    }
+    },
+
+    async setDarkMode() {
+      await this.editor.setAppearance({
+        theme: 'dark',
+        panels: {
+          tools: {
+            dock: 'left'
+          }
+        }
+      });
+    },
 
   },
   computed: {

@@ -20,6 +20,10 @@ export default {
         }
     },
 
+    getUserId: ({ user }) => {
+        return user.id
+    },
+
     hasCoachRole: ({ hasCoachRole }) => {
         return hasCoachRole;
     },
