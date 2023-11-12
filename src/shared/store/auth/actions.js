@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import {SUCCESS, ERROR} from "../../shared/constants/loadingStatueses.constants";
+import {SUCCESS, ERROR} from "../../constants/loadingStatueses.constants";
 
 export default {
     LOGIN(context, payload) {

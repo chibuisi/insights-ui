@@ -48,7 +48,7 @@
 import useVuelidate from '@vuelidate/core'
 import { helpers, maxLength, required } from '@vuelidate/validators';
 import {mapGetters} from "vuex";
-import {SUCCESS} from "../../shared/constants/loadingStatueses.constants";
+import {SUCCESS} from "../../../shared/constants/loadingStatueses.constants";
 
 export default {
   name: "ResetPassword",

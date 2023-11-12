@@ -65,7 +65,7 @@
 import {mapGetters, mapState} from "vuex";
 import useVuelidate from '@vuelidate/core'
 import { helpers, maxLength, required } from '@vuelidate/validators';
-import Toast from "../components/Toast";
+import Toast from "../../shared/components/Toast.vue";
 
 export default {
   name: "Login",

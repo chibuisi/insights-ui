@@ -18,20 +18,20 @@
 </template>
 
 <script>
-import BannerComponent from "../components/home/BannerComponent";
-import FeaturedServices from "../components/home/FeaturedServices";
-import AboutUs from "../components/home/AboutUs";
-import TopicsBar from "../components/home/TopicsBar";
-import CallToAction from "../components/home/CallToAction.vue";
-import OnFocusSection from "../components/home/OnFocusSection.vue";
-import ServiceSection from "../components/home/ServiceSection.vue";
-import Testimonials from "../components/home/Testimonials.vue";
-import OurPricing from "../components/home/OurPricing.vue";
-import FaqSection from "../components/home/FaqSection.vue";
-import TeamSection from "../components/home/TeamSection.vue";
-import RecentBlogs from "../components/home/RecentBlogs.vue";
-import ContactSection from "../components/home/ContactSection.vue";
-import FooterSection from "../components/home/FooterSection.vue";
+import BannerComponent from "../components/BannerComponent.vue";
+import FeaturedServices from "../components/FeaturedServices.vue";
+import AboutUs from "../components/AboutUs.vue";
+import TopicsBar from "../components/TopicsBar.vue";
+import CallToAction from "../components/CallToAction.vue";
+import OnFocusSection from "../components/OnFocusSection.vue";
+import ServiceSection from "../components/ServiceSection.vue";
+import Testimonials from "../components/Testimonials.vue";
+import OurPricing from "../components/OurPricing.vue";
+import FaqSection from "../components/FaqSection.vue";
+import TeamSection from "../components/TeamSection.vue";
+import RecentBlogs from "../components/RecentBlogs.vue";
+import ContactSection from "../components/ContactSection.vue";
+import FooterSection from "../components/FooterSection.vue";
 import {mapState} from "vuex";
 
 export default {

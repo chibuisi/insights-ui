@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {testSite} from "./site";
+import {testSite} from "../utils/site";
 export default {
   name: 'UnlayerEditor',
 

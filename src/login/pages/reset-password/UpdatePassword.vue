@@ -59,7 +59,7 @@
 import {mapState, mapGetters} from "vuex";
 import useVuelidate from '@vuelidate/core'
 import {helpers, minLength, maxLength, required, sameAs} from '@vuelidate/validators';
-import {SUCCESS} from "../../shared/constants/loadingStatueses.constants";
+import {SUCCESS} from "../../../shared/constants/loadingStatueses.constants";
 
 export default {
   name: "UpdatePassword",

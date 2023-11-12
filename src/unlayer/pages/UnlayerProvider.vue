@@ -19,7 +19,7 @@
 
 <script>
 
-import UnlayerEditor from "./UnlayerEditor.vue";
+import UnlayerEditor from "../components/UnlayerEditor.vue";
 
 export default {
   name: 'UnlayerProvider',

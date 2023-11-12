@@ -32,7 +32,7 @@
 <h4></h4>
 
 <script>
-import TopicModal from "../components/modal/TopicModal";
+import TopicModal from "../modal/TopicModal.vue";
 export default {
   name: "Topics",
   components: {
