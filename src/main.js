@@ -27,8 +27,6 @@ if(process.env.NODE_ENV === 'development'){
 
 sync(store, router);
 
-Vue.config.productionTip = false;
-
 new Vue({
     router,
     store,
