@@ -161,7 +161,8 @@ export default {
           this.isLoggingIn = false;
         }
         await this.$router.push({
-          path: '/user/dashboard'
+          name: 'dashboard',
+          replace: true
         })
         this.isLoggingIn = false;
       }

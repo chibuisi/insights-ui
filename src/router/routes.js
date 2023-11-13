@@ -11,6 +11,13 @@ import UpdatePassword from "../login/pages/reset-password/UpdatePassword";
 import UnlayerProvider from "../unlayer/pages/UnlayerProvider.vue";
 import Dashboard from "../crm/components/Dashboard.vue";
 import User from "../crm/pages/User.vue";
+import UserTopics from "../components/user/topics/UserTopics.vue";
+import Notifications from "../components/user/notifications/Notifications.vue";
+import CoachMeetings from "../components/CoachMeetings.vue";
+import UserGoals from "../components/user/UserGoals.vue";
+import UserAssessments from "../components/user/UserAssessments.vue";
+import UserCoachReport from "../components/user/UserCoachReport.vue";
+import Profile from "../components/user/Profile.vue";
 
 const routes = [
     {
@@ -58,11 +65,9 @@ const routes = [
         }
     },
     {
-        path: '/user',
-        name: 'user',
+        path: '',
         component: User,
         children: [
-            {path: '', component: Dashboard},
             {
                 path: 'dashboard',
                 component: Dashboard,
@@ -73,11 +78,59 @@ const routes = [
             },
             {
                 path: 'profile',
-                component: Dashboard,
+                component: Profile,
                 meta: {
-                    title: 'Minor Insights - Dashboard'
+                    title: 'Minor Insights - Profile'
                 },
                 name: 'profile'
+            },
+            {
+                path: 'user-topics',
+                component: UserTopics,
+                meta: {
+                    title: 'Minor Insights - User topics'
+                },
+                name: 'user-topics'
+            },
+            {
+                path: 'notifications',
+                component: Notifications,
+                meta: {
+                    title: 'Minor Insights - Notifications'
+                },
+                name: 'notifications'
+            },
+            {
+                path: 'user-coach-meetings',
+                component: CoachMeetings,
+                meta: {
+                    title: 'Minor Insights - Coach Meetings'
+                },
+                name: 'user-coach-meetings'
+            },
+            {
+                path: 'user-goals',
+                component: UserGoals,
+                meta: {
+                    title: 'Minor Insights - User Goals'
+                },
+                name: 'user-goals'
+            },
+            {
+                path: 'user-assessments',
+                component: UserAssessments,
+                meta: {
+                    title: 'Minor Insights - User Assessments'
+                },
+                name: 'user-assessments'
+            },
+            {
+                path: 'user-coach-report',
+                component: UserCoachReport,
+                meta: {
+                    title: 'Minor Insights - User Coach Report'
+                },
+                name: 'user-coach-report'
             },
         ],
     },
