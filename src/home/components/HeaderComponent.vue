@@ -18,8 +18,8 @@
 <script>
 
 import {mapGetters, mapState} from "vuex";
-import IndexNav from "../IndexNav.vue";
-import UserNav from "../UserNav.vue";
+import IndexNav from "./IndexNav.vue";
+import UserNav from "./UserNav.vue";
 
 export default {
   name: "HeaderComponent",

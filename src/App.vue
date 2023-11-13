@@ -35,11 +35,6 @@ export default {
       routeName: ({ route }) => route.name,
     }),
 
-    ...mapGetters({
-      userProfile: 'auth/getUserProfile',
-      isLoggedIn: 'auth/isLoggedIn',
-    }),
-
     isPageSupported() {
       return this.routeName !== 'page.not.Found';
     },

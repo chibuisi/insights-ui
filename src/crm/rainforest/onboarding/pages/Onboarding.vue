@@ -1,6 +1,15 @@
 <template>
   <div>
-    <h1>Welcome to onboarding</h1>
+    <div class="pagetitle">
+      <h1>Onboarding</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Onboarding</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
     <p>The Session is: {{ this.session }}</p>
   </div>
 </template>
@@ -24,9 +33,10 @@ export default {
   computed: {
     ...mapGetters({
       session: 'rainforest/getSession',
+      jwt: 'auth/getJwt'
     }),
     ...mapState({
-      session: 'rainforest/session',
+
     })
   },
 
@@ -36,7 +46,7 @@ export default {
 
   methods: {
     async getSession() {
-      await this.$store.dispatch('rainforest/FETCH_SESSION');
+      await this.$store.dispatch('rainforest/FETCH_SESSION', this.jwt);
     }
   }
 }

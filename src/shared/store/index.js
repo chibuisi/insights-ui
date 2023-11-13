@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 
 import auth from './auth';
 import boot from './boot';
-import rainforest from '../../rainforest/store';
+import rainforest from '../../crm/rainforest/onboarding/store';
 
 Vue.use(Vuex);
 

@@ -6,18 +6,19 @@ import Blog from "@/home/pages/Blog";
 import Register from "@/login/pages/Register";
 import PageNotFound from "@/shared/pages/PageNotFound";
 import Topics from "@/home/pages/Topics";
-import ResetPassword from "../login/pages/reset-password/ResetPassword";
-import UpdatePassword from "../login/pages/reset-password/UpdatePassword";
-import UnlayerProvider from "../unlayer/pages/UnlayerProvider.vue";
-import Dashboard from "../crm/components/Dashboard.vue";
-import User from "../crm/pages/User.vue";
-import UserTopics from "../components/user/topics/UserTopics.vue";
-import Notifications from "../components/user/notifications/Notifications.vue";
-import CoachMeetings from "../components/CoachMeetings.vue";
-import UserGoals from "../components/user/UserGoals.vue";
-import UserAssessments from "../components/user/UserAssessments.vue";
-import UserCoachReport from "../components/user/UserCoachReport.vue";
-import Profile from "../components/user/Profile.vue";
+import ResetPassword from "@/login/pages/reset-password/ResetPassword";
+import UpdatePassword from "@/login/pages/reset-password/UpdatePassword";
+import UnlayerProvider from "@/unlayer/pages/UnlayerProvider.vue";
+import Dashboard from "@/crm/dashboard/components/Dashboard.vue";
+import User from "@/crm/User";
+import UserTopics from "@/crm/user-topics/components/UserTopics";
+import Notifications from "@/crm/notifications/components/Notifications";
+import CoachMeetings from "@/crm/coach-meetings/components/CoachMeetings.vue";
+import UserGoals from "@/crm/user-goals/components/UserGoals.vue";
+import UserAssessments from "@/crm/user-assessments/components/UserAssessments.vue";
+import UserCoachReport from "@/crm/user-coach-report/components/UserCoachReport.vue";
+import Profile from "@/crm/profile/components/Profile.vue";
+import Onboarding from "../crm/rainforest/onboarding/pages/Onboarding.vue";
 
 const routes = [
     {
@@ -131,6 +132,14 @@ const routes = [
                     title: 'Minor Insights - User Coach Report'
                 },
                 name: 'user-coach-report'
+            },
+            {
+                path: 'onboarding',
+                component: Onboarding,
+                meta: {
+                    title: 'Minor Insights - Onboarding'
+                },
+                name: 'onboarding'
             },
         ],
     },

@@ -20,6 +20,10 @@ export default {
         }
     },
 
+    getJwt: ({ jwt }) => {
+        return jwt;
+    },
+
     getUserId: ({ user }) => {
         return user.id
     },

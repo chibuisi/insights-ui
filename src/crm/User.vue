@@ -6,7 +6,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <router-link to="dashboard" data-bs-target="#dashboard-nav" data-bs-toggle="collapse">
+          <router-link to="dashboard" data-bs-target="#dashboard-nav">
             <span class="nav-link" :class="{ 'collapsed': this.$route.name !== 'dashboard' }">
               <i class="bi bi-grid"></i>
               <span>Dashboard</span>
@@ -15,7 +15,7 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <router-link to="user-topics" data-bs-target="#topics-nav" data-bs-toggle="collapse">
+            <router-link to="user-topics" data-bs-target="#topics-nav">
               <span class="nav-link" :class="{ 'collapsed': this.$route.name !== 'user-topics' }">
                 <i class="bi bi-menu-button-wide"></i>
                 <span>My Topics</span>
@@ -33,7 +33,7 @@
         </li><!-- End My Notifications Nav -->
 
         <li class="nav-item">
-          <router-link to="user-coach-meetings" data-bs-target="#user-coach-meetings-nav" data-bs-toggle="collapse">
+          <router-link to="user-coach-meetings" data-bs-target="#user-coach-meetings-nav">
             <span :class="{ 'collapsed': this.$route.name !== 'user-coach-meetings' }" class="nav-link">
               <i class="bi bi-layout-text-window-reverse"></i>
               <span>Coach Meetings</span>
@@ -42,7 +42,7 @@
         </li><!-- End Coach Meetings Nav -->
 
         <li class="nav-item">
-          <router-link to="/user/user-goals" data-bs-target="#user-goals-nav" data-bs-toggle="collapse">
+          <router-link to="user-goals" data-bs-target="#user-goals-nav">
             <span :class="{ 'collapsed': this.$route.name !== 'user-goals' }" class="nav-link">
               <i class="bi bi-circle"></i>
               <span>My Goals</span>
@@ -51,7 +51,7 @@
         </li><!-- End My Goals Nav -->
 
         <li class="nav-item">
-          <router-link to="user-assessments" data-bs-target="#user-assessments-nav" data-bs-toggle="collapse">
+          <router-link to="user-assessments" data-bs-target="#user-assessments-nav">
             <span :class="{ 'collapsed': this.$route.name !== 'user-assessments' }" class="nav-link">
               <i class="bi bi-bar-chart"></i>
               <span>My Assessments</span>
@@ -60,19 +60,22 @@
         </li><!-- End Assessments Nav -->
 
         <li class="nav-item">
-          <router-link to="user-coach-report" data-bs-target="#user-coach-report-nav" data-bs-toggle="collapse">
+          <router-link to="user-coach-report" data-bs-target="#user-coach-report-nav">
             <span :class="{ 'collapsed': this.$route.name !== 'user-coach-report' }" class="nav-link">
               <i class="bi bi-box"></i>
-              <span>Coach Reports & Feedback</span>
+              <span>Reports & Feedback</span>
             </span>
           </router-link><!-- End Reports/Feedback Nav -->
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#onboarding-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Onboarding</span>
-          </a>
-        </li><!-- End Onboarding Nav -->
+          <router-link to="onboarding" data-bs-target="#">
+            <span :class="{ 'collapsed': this.$route.name !== 'onboarding' }" class="nav-link">
+              <i class="bi bi-gem"></i>
+              <span>Onboarding</span>
+            </span>
+          </router-link><!-- End Onboarding Nav -->
+        </li>
 
 
       </ul>
