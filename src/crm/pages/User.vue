@@ -215,6 +215,13 @@
           </ul>
         </li><!-- End Assessments Nav -->
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#onboarding-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-layout-text-window-reverse"></i><span>Onboarding</span>
+          </a>
+        </li><!-- End Onboarding Nav -->
+
+
       </ul>
 
     </aside><!-- End Sidebar-->

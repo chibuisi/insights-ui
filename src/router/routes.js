@@ -1,4 +1,4 @@
-import store from '@/store';
+import store from '@/shared/store';
 import Login from "@/login/pages/Login";
 import Welcome from "@/home/pages/Welcome";
 import GetStarted from "@/home/pages/get-started/GetStarted";

@@ -3,13 +3,15 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
 import auth from './auth';
-import boot from './boot'
+import boot from './boot';
+import rainforest from '../../rainforest/store';
 
 Vue.use(Vuex);
 
 export const modules = {
     auth,
     boot,
+    rainforest,
 };
 
 const vuexPersistedPathsAllowList = [
@@ -18,6 +20,7 @@ const vuexPersistedPathsAllowList = [
     'boot.topics',
     'boot.articles',
     'boot.coaches',
+    'rainforest.session'
 ];
 
 const localStorageKey = `minor-insights-${process.env.VUE_APP_ENV}`;

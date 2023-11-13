@@ -2,7 +2,7 @@ import App from './App.vue'
 import { sync } from 'vuex-router-sync'
 import VueRouter from 'vue-router'
 import { createRouter } from "./router";
-import store from '@/store'
+import store from '@/shared/store'
 import * as errorUtils from "./shared/utils/error.util";
 import { setupInterceptors } from "./shared/utils/interceptor.util";
 import Vue from "vue";
